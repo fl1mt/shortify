@@ -26,7 +26,7 @@ public class Url {
         this.shortCode = shortCode;
         this.clickCount = clickCount;
     }
-    // docker hub test /
+    // docker hub test text
     public void setClickCount(Long count){
         clickCount = count;
     }
