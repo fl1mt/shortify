@@ -20,5 +20,27 @@ public class Url {
     private String shortCode;
 
     private long clickCount;
+
+    public Url(String originalUrl, String shortCode, int clickCount) {
+        this.originalUrl = originalUrl;
+        this.shortCode = shortCode;
+        this.clickCount = clickCount;
+    }
+
+    public void setClickCount(Long count){
+        clickCount = count;
+    }
+
+    public void setOriginalUrl(String url){
+        originalUrl = url;
+    }
+
+    public Long getClickCount(){
+        return clickCount;
+    }
+
+    public String getOriginalUrl() {
+        return originalUrl;
+    }
 }
 

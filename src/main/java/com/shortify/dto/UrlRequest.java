@@ -7,4 +7,8 @@ import lombok.Data;
 public class UrlRequest {
     @NotBlank
     private String originalUrl;
+
+    public String getOriginalUrl() {
+        return originalUrl;
+    }
 }

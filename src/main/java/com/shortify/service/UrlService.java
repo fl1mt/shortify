@@ -4,25 +4,24 @@ import com.shortify.dto.UrlRequest;
 import com.shortify.dto.UrlResponse;
 import com.shortify.entity.Url;
 import com.shortify.repository.UrlRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;
 
 @Service
-@RequiredArgsConstructor
 public class UrlService {
 
     private final UrlRepository urlRepository;
     private static final String BASE_URL = "http://localhost:8080/s/";
 
+    public UrlService(UrlRepository urlRepository){
+        this.urlRepository = urlRepository;
+    }
+
     public UrlResponse shortenUrl(UrlRequest request) {
         String shortCode = generateShortCode();
-        Url entity = Url.builder()
-                .originalUrl(request.getOriginalUrl())
-                .shortCode(shortCode)
-                .clickCount(0)
-                .build();
+        Url entity = new Url(request.getOriginalUrl(), shortCode, 0);
+
 
         urlRepository.save(entity);
         return new UrlResponse(BASE_URL + shortCode);

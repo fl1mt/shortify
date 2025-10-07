@@ -4,16 +4,18 @@ import com.shortify.dto.UrlRequest;
 import com.shortify.dto.UrlResponse;
 import com.shortify.service.UrlService;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 @RestController
-@RequiredArgsConstructor
 public class UrlController {
 
     private final UrlService urlService;
+
+    public UrlController(UrlService urlService){
+        this.urlService = urlService;
+    }
 
     @PostMapping("/api/shorten")
     public ResponseEntity<UrlResponse> shortenUrl(@Valid @RequestBody UrlRequest request) {
